@@ -19,9 +19,7 @@ class CocktailsController extends Controller
     // }
     public function index()
     {
-        $response = Http::get(url: 'www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita');
-        $data = $response->json();
-        return view('table', compact('data'));
+        return view('login');
     }
     /**
      * Store a newly created resource in storage.
