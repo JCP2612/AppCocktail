@@ -12,12 +12,17 @@ class CocktailsController extends Controller
     /**
      * Display a listing of the resource.
      */
+    // public function index()
+    // {
+    //     $response = Http::get(url: 'www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita');
+    //     return $response->json();
+    // }
     public function index()
     {
         $response = Http::get(url: 'www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita');
-        return $response->json();
+        $data = $response->json();
+        return view('table', compact('data'));
     }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -51,6 +56,19 @@ class CocktailsController extends Controller
         $cocktail->strInstructions = "Solo se sirve";
         $cocktail->save();
         return response()->json("ok");
+    }
+    public function save(Request $request)
+    {
+        $drink = new Cocktail();
+        $drink->idDrink = "200";
+        $drink->strDrink = $request->input('drink');
+        $drink->strCategory = $request->input('category');
+        $drink->strAlcoholic = $request->input('alcoholic');
+        $drink->strGlass = $request->input('glass');
+        $drink->strInstructions = "Solo se sirve";
+        $drink->save();
+
+        return response()->json(['message' => 'Drink saved successfully!'], 200);
     }
     // public function update(Request $request, string $id)
     // {
