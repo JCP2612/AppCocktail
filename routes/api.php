@@ -7,7 +7,9 @@ use App\Http\Controllers\ApiController;
 
 Route::resource('drinks', CocktailsController::class)->except(['create', 'edit']);
 
-Route::get('/drinks', [ApiController::class, 'index']);
+Route::get('/cocktails', [ApiController::class, 'index']);
+
+Route::post('/cocktails', [CocktailsController::class, 'update']);
 
 
 // Route::get('/user', function (Request $request) {

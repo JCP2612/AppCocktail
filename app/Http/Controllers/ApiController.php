@@ -10,9 +10,17 @@ class ApiController extends Controller
 {
     public function index()
     {
-        $response = Http::get('www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita');
+        $response = Http::get('www.thecocktaildb.com/api/json/v1/1/search.php?s=');
         $data = $response->json();
 
         return response()->json($data);
     }
+
+    // public function update()
+    // {
+    //     $response = Http::patch(`www.thecocktaildb.com/api/json/v1/1/lookup.php?i={$idDrink}`);
+    //     $data = $response->json();
+
+    //     return response()->json();
+    // }
 }
